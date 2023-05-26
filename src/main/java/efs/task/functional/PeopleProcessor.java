@@ -15,7 +15,7 @@ class PeopleProcessor {
     //       imion ludzi żyjących w danym mieście (cityOfLiving). Lista ma być posortowana po wieku osób.
     List<String> namesOfPeopleSortedByAgeLivingIn(String cityOfLiving, Collection<Person> people) {
         return people.stream()
-                .filter(p-> Objects.equals(p.getCityOfLiving(), cityOfLiving))
+                .filter(p -> Objects.equals(p.getCityOfLiving(), cityOfLiving))
                 .sorted(Comparator.comparing(Person::getAge))
                 .map(Person::getName).collect(Collectors.toList());
     }
@@ -26,7 +26,7 @@ class PeopleProcessor {
         return people.stream().collect(Collectors.groupingBy(Person::getCityOfLiving)).entrySet()
                 .stream().collect(Collectors
                         .toMap(Map.Entry::getKey,
-                                ent->ent.getValue()
+                                ent -> ent.getValue()
                                         .stream()
                                         .collect(Collectors.averagingInt(Person::getAge))));
 
